@@ -1,4 +1,4 @@
-.table { background: url('backdrop.jpg'); padding: 2em; border-radius: 2em;}
+.table { background-color: #060; padding: 2em; border-radius: 2em;}
 
 .card-0-0{ width: 71px; height: 96px; background: url('cards.png') -1px -1px}
 .card-0-1{ width: 71px; height: 96px; background: url('cards.png') -74px -1px}

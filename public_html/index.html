@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>Solitaire in AngularJS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.5/angular.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+  </head>
+  <body ng-app="solitaireApp" ng-controller="GameCtrl">
+    
+    <h1>Solitaire</h1>
+    <em>in AngularJS</em>
+    <hr>
+
+    <div class="stock table">
+      <div ng-repeat="card in deck" class="card-{{card.suite}}-{{card.val}}"></div>                   
+    </div>
+    <div class="waste"></div>
+    <div class="foundations"></div>
+    <div class="tableau"></div>
+    
+    <hr>
+    <address><a href="mailto:nick.smith@gmail.com">nick.smith@gmail.com</a></address>
+    
+    <script src="solitaire.js"></script>
+    
+  </body>
+</html>

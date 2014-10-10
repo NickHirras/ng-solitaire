@@ -13,17 +13,34 @@ and open the template in the editor.
     <link type="text/css" rel="stylesheet" href="style.css"/>
   </head>
   <body ng-app="solitaireApp" ng-controller="GameCtrl">
-    
+      
     <h1>Solitaire</h1>
     <em>in AngularJS</em>
     <hr>
 
-    <div class="stock table">
-      <div ng-repeat="card in deck" class="card-{{card.suite}}-{{card.val}}"></div>                   
+    <div class="table">
+      <div class="stock">      
+        <div ng-repeat="card in stock.slice(-7)" style="position: absolute; left: {{2*$index}}px; top: {{-2*$index}}px;" class="card-back" ng-show="stock.length > 0"></div>
+        <div class="card-empty" ng-show="stock.length === 0"></div>
+      </div>
+      <div class="waste">
+        <div class="card-{{waste.last().suite}}-{{waste.last().val}}" ng-show="waste.length > 0"></div>
+        <div class="card-empty" ng-show="waste.length === 0"></div>        
+      </div>
+      <button style="margin-top: 100px;" ng-click="flip(1)">Flip 1</button>
+      <button style="margin-top: 100px;" ng-click="flip(3)">Flip 3</button>
+      <div class="foundations">
+        <div ng-repeat="foundation in foundations">
+          <div class="card-empty" ng-show="foundation.length === 0">{{symbols[$index]}}</div>
+        </div>
+      </div>
+      <div class="tableau">
+        <div ng-repeat="t in tableau" class="tableau-column" style="position: relative;">
+          <div ng-repeat="card in t" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-back" ng-show="$index < tableauHidden[$parent.$index]"></div>        
+          <div ng-repeat="card in t" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-{{card.suite}}-{{card.val}}" ng-show="$index >= tableauHidden[$parent.$index]"></div>        
+        </div>
+      </div> 
     </div>
-    <div class="waste"></div>
-    <div class="foundations"></div>
-    <div class="tableau"></div>
     
     <hr>
     <address><a href="mailto:nick.smith@gmail.com">nick.smith@gmail.com</a></address>

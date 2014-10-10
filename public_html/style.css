@@ -1,5 +1,19 @@
-.table { background-color: #060; padding: 2em; border-radius: 2em;}
+.table { background-color: #060; padding: 2em; border-radius: 2em; height: 600px; position: relative;}
 
+.stock { position: absolute; top: 20px; left: 20px; }
+
+.waste { position: absolute; top: 20px; left: 120px; }
+
+.foundations { position: absolute; top: 20px; left: 300px; }
+
+.foundations div { position: relative; display: inline-block; margin-left: 1em; }
+
+.tableau { position: absolute; display: block; top: 200px; left: 130px; }
+
+.tableau-column { position: relative; margin-right: 6em; display: inline-block; }
+
+.card-empty{ width: 67px; height: 92px; line-height: 92px; text-align: center; font-size: 32px; color: #bbb; margin: 4px; border: 1px dashed #ccc; border-radius: 4px}
+.card-back{ width: 71px; height: 96px; background: url('card-back.png')}
 .card-0-0{ width: 71px; height: 96px; background: url('cards.png') -1px -1px}
 .card-0-1{ width: 71px; height: 96px; background: url('cards.png') -74px -1px}
 .card-0-2{ width: 71px; height: 96px; background: url('cards.png') -147px -1px}

@@ -1,4 +1,4 @@
-.table { background-color: #060; padding: 2em; border-radius: 2em; height: 600px; position: relative;}
+.table { background-color: #060; padding: 2em; border-radius: 2em; height: 600px; min-width: 770px; position: relative;}
 
 .stock { position: absolute; top: 20px; left: 20px; }
 

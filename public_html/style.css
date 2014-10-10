@@ -1,5 +1,9 @@
 .table { background-color: #060; padding: 2em; border-radius: 2em; height: 600px; min-width: 770px; position: relative;}
 
+.active { border: 2px solid yellow !important; }
+
+.active-drop:hover { border: 2px solid green !important; }
+
 .stock { position: absolute; top: 20px; left: 20px; }
 
 .waste { position: absolute; top: 20px; left: 120px; }

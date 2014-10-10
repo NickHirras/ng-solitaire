@@ -11,6 +11,8 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
   $scope.foundations = [[], [], [], []];
   $scope.tableau = [[], [], [], [], [], [], []];
   $scope.tableauHidden = [0, 1, 2, 3, 4, 5, 6];
+  
+  $scope.selected = null;
 
   Array.prototype.last = function () {
     return this[this.length - 1];
@@ -18,6 +20,7 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
 
 
   $scope.flip = function(howMany) {
+    $scope.selected = null;
     if($scope.stock.length === 0) {
       while($scope.waste.length > 0) {
         $scope.stock.push($scope.waste.shift());
@@ -31,6 +34,11 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
       }
     }
   };
+
+  $scope.select = function(card) {
+    $scope.selected = card;
+    alert('You selected suite ' + card.suite + ' val ' + card.val);
+  }
 
   var shuffle = function (o) { //v1.0
     for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);

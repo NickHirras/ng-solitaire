@@ -14,8 +14,8 @@ and open the template in the editor.
   </head>
   <body ng-app="solitaireApp" ng-controller="GameCtrl">
       
-    <h1>Solitaire</h1>
-    <em>in AngularJS</em>
+    <h1>Solitaire in Angular JS</h1>
+    <a href="//github.com/imnes/ng-solitaire">See code at github.com/imnes/ng-solitaire</a>
     <hr>
 
     <div class="table">
@@ -24,7 +24,7 @@ and open the template in the editor.
         <div class="card-empty" ng-show="stock.length === 0"></div>
       </div>
       <div class="waste">
-        <div class="card-{{waste.last().suite}}-{{waste.last().val}}" ng-show="waste.length > 0"></div>
+        <div class="card-{{waste.last().suite}}-{{waste.last().val}}" ng-show="waste.length > 0" ng-click="select(waste.last())" ng-class="{active: waste.last() === selected}"></div>
         <div class="card-empty" ng-show="waste.length === 0"></div>        
       </div>
       <button style="margin-top: 100px;" ng-click="flip(1)">Flip 1</button>
@@ -37,7 +37,7 @@ and open the template in the editor.
       <div class="tableau">
         <div ng-repeat="t in tableau" class="tableau-column" style="position: relative;">
           <div ng-repeat="card in t" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-back" ng-show="$index < tableauHidden[$parent.$index]"></div>        
-          <div ng-repeat="card in t" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-{{card.suite}}-{{card.val}}" ng-show="$index >= tableauHidden[$parent.$index]"></div>        
+          <div ng-repeat="card in t" ng-click="select(card)" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-{{card.suite}}-{{card.val}}" ng-show="$index >= tableauHidden[$parent.$index]"></div>        
         </div>
       </div> 
     </div>

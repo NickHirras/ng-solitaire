@@ -33,7 +33,7 @@ and open the template in the editor.
       <div class="foundations">
         <div ng-repeat="foundation in foundations">
           <div class="card-empty" ng-show="foundation.length === 0" ng-class="{'possible-target': selected.suite === $index && selected.val === 0}" ng-click="(selected.suite === $index && selected.val === 0) ? moveSelectedToFoundation(foundation): '';">{{symbols[$index]}}</div>
-          <div class="card-{{foundation.last().suite}}-{{foundation.last().val}}" ng-show="foundation.length > 0" ng-class="{'possible-target': selectedFrom.last().suite === $index && selectedFrom.last().val === foundation.last().val + 1}" ng-click="(selectedFrom.last().suite === $index && selectedFrom.last().val === foundation.last().val + 1) ? moveSelectedToFoundation(foundation): '';"></div>
+          <div class="card-not-empty card-{{foundation.last().suite}}-{{foundation.last().val}}" ng-show="foundation.length > 0" ng-class="{'possible-target': selectedFrom.last().suite === $index && selectedFrom.last().val === foundation.last().val + 1}" ng-click="(selectedFrom.last().suite === $index && selectedFrom.last().val === foundation.last().val + 1) ? moveSelectedToFoundation(foundation): '';">&nbsp;</div>
         </div>
       </div>
       <div class="tableau">

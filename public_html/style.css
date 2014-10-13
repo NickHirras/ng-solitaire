@@ -21,6 +21,7 @@
 .tableau-column { position: relative; margin-right: 6em; display: inline-block; }
 
 .card-empty{ width: 67px; height: 92px; line-height: 92px; text-align: center; font-size: 32px; color: #bbb; margin: 4px; border: 1px dashed #ccc; border-radius: 4px}
+.card-not-empty{ width: 67px; height: 92px; line-height: 92px; text-align: center; font-size: 32px; color: #bbb; margin: 4px; border: 1px transparent; border-radius: 4px}
 .card-back{ width: 71px; height: 96px; background: url('card-back.png')}
 .card-0-0{ width: 71px; height: 96px; background: url('cards.png') -1px -1px}
 .card-0-1{ width: 71px; height: 96px; background: url('cards.png') -74px -1px}

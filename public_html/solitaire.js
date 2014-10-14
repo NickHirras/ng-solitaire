@@ -66,18 +66,27 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
   };
 
   $scope.moveSelectedToFoundation = function(foundation) {
+    if($scope.selected === null || $scope.selectedFrom === null) {
+      return;
+    }
     foundation.push($scope.selectedFrom.pop());
     $scope.selected = null;
     $scope.selectedFrom = null;
   };
   
   $scope.moveSelectedToTableau = function(tableauIndex) {
+    if($scope.selected === null || $scope.selectedFrom === null) {
+      return;
+    }
     if($scope.selectedFrom === $scope.waste) {
       var card = $scope.selectedFrom.pop();
       card.face = $scope.face.up;
       $scope.tableau[tableauIndex].push(card);
-    } else {
+    } else {      
       var idx = $scope.selectedFrom.indexOf($scope.selected);
+      if(idx === -1) {
+        return;
+      }
       var cards = $scope.selectedFrom.splice(idx, $scope.selectedFrom.length - idx);
       $scope.tableau[tableauIndex] = $scope.tableau[tableauIndex].concat(cards);
     }

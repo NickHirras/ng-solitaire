@@ -182,3 +182,5 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
   $scope.newGame();
 
 });
+
+ 

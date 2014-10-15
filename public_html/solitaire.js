@@ -12,6 +12,7 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
   };
 
   $scope.flip = function(howMany) {
+    $scope.saveState()
     $scope.selected = null;
     $scope.selectedFrom = null;
     if($scope.stock.length === 0) {
@@ -39,8 +40,9 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
   };
   
   $scope.flipTableauCard = function(tableauIndex, cardIndex) {
+    $scope.saveState()
     $scope.selected = null;
-    $scope.selectedFrom = null;    
+    $scope.selectedFrom = null;        
     if(cardIndex !== $scope.tableau[tableauIndex].length - 1) {
       return;
     }
@@ -69,6 +71,7 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
     if($scope.selected === null || $scope.selectedFrom === null) {
       return;
     }
+    $scope.saveState()
     foundation.push($scope.selectedFrom.pop());
     $scope.selected = null;
     $scope.selectedFrom = null;
@@ -78,6 +81,7 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
     if($scope.selected === null || $scope.selectedFrom === null) {
       return;
     }
+    $scope.saveState()
     if($scope.selectedFrom === $scope.waste) {
       var card = $scope.selectedFrom.pop();
       card.face = $scope.face.up;
@@ -101,7 +105,8 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
             $scope.foundations[3].length === 13);
   };
 
-  $scope.playAgain = function() {
+  $scope.newGame = function() {
+    $scope.state = [];
     $scope.face = {down: 0, up: 1};
     $scope.suites = {clubs: 0, spaids: 1, hearts: 2, diamonds: 3};
     $scope.symbols = ['♣', '♠', '♥', '♦'];
@@ -145,12 +150,35 @@ angular.module('solitaireApp').controller('GameCtrl', function ($scope) {
     };
   };
   
+  $scope.undo = function() {
+    if($scope.state.length === 0) {
+      return;
+    }
+    var state = $scope.state.pop();
+    $scope.deck = angular.copy(state.deck);
+    $scope.stock = angular.copy(state.stock);
+    $scope.waste = angular.copy(state.waste);
+    $scope.foundations = angular.copy(state.foundations);
+    $scope.tableau = angular.copy(state.tableau);
+    $scope.selected = null;
+    $scope.selectedFrom = null;
+  };
+  
+  $scope.saveState = function() {    
+    $scope.state.push({
+      deck: angular.copy($scope.deck),
+      stock: angular.copy($scope.stock),
+      waste: angular.copy($scope.waste),
+      foundations: angular.copy($scope.foundations),
+      tableau: angular.copy($scope.tableau),
+    });    
+  };
   
   var shuffle = function (o) {
     for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
   };
-
-  $scope.playAgain();
+  
+  $scope.newGame();
 
 });

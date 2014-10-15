@@ -23,6 +23,7 @@
       </div>
       <button style="margin-top: 100px;" ng-click="flip(1)">Flip 1</button>
       <button style="margin-top: 100px;" ng-click="flip(3)">Flip 3</button>
+      <button style="margin-top: 100px; margin-left: 2em;" ng-disabled="state.length === 0" ng-click="undo()">Undo</button>
       <div class="foundations">
         <div ng-repeat="foundation in foundations">
           <div class="card-empty" ng-show="foundation.length === 0" ng-class="{'possible-target': selected.suite === $index && selected.val === 0}" ng-click="(selected.suite === $index && selected.val === 0) ? moveSelectedToFoundation(foundation): '';">{{symbols[$index]}}</div>
@@ -32,7 +33,7 @@
       <div class="tableau">
         <div ng-repeat="t in tableau" class="tableau-column" style="position: relative;">
           <div ng-repeat="card in t" ng-click="flipTableauCard($parent.$index, $index)" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-back" ng-show="card.face === face.down"></div>        
-          <div ng-repeat="card in t" ng-click="(differentColor(selected.suite, card.suite) && selected.val === card.val - 1) ? moveSelectedToTableau($parent.$index) : selectTableauCard($parent.$index, $index)" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-{{card.suite}}-{{card.val}}" ng-show="card.face === face.up" ng-class="{active: tableau[$parent.$index].indexOf(selected) > -1 && tableau[$parent.$index].indexOf(selected) <= $index, 'possible-target': differentColor(selected.suite, card.suite) && selected.val === card.val - 1 && card === tableau[$parent.$index].last()}"></div>        
+          <div ng-repeat="card in t" ng-click="(differentColor(selected.suite, card.suite) && selected.val === card.val - 1 && card === tableau[$parent.$index].last()) ? moveSelectedToTableau($parent.$index) : selectTableauCard($parent.$index, $index)" style="position: absolute; left: 0px; top: {{20*$index}}px;" class="card-{{card.suite}}-{{card.val}}" ng-show="card.face === face.up" ng-class="{active: tableau[$parent.$index].indexOf(selected) > -1 && tableau[$parent.$index].indexOf(selected) <= $index, 'possible-target': differentColor(selected.suite, card.suite) && selected.val === card.val - 1 && card === tableau[$parent.$index].last()}"></div>        
         </div>
       </div> 
     </div>    
